@@ -3,7 +3,7 @@ import json as j
 import pprint as p
 
 class Frontend:
-  """Class for controling cr95hf over serial line."""
+  """Class for homeport frontend API tests."""
 
   def __init__(self):
     """Constructor initialize url and endpoints dictionary."""
@@ -96,10 +96,3 @@ class Frontend:
       return
     response = requests.get(self.url + self.endpoints["card"],headers=self.head)
     p.pprint(response.json())
-
-
-
-
-
-
-
