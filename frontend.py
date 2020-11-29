@@ -14,9 +14,15 @@ class Frontend:
       "info": "tutorioal",
       "pin": "change-pin",
       "bug": "bug-report",
-      "card": "get-customer-cards"
+      "card": "get-customer-cards",
+      "broken": "bike-task"
     }
     self.head = ""
+
+  def listBroken(self):
+    """Displays list of broken bikes."""
+    response = requests.get(self.url + self.endpoints["broken"],headers=self.head)
+    p.pprint(response.json())
 
   def getBikeInfo(self,bikeNum):
     """
@@ -60,7 +66,6 @@ class Frontend:
     if(not self.head):
       print("Login first!")
       return
-
     data = {
       "CardNumber": str(self.cardNum),
       "NewPin": str(newPin),
