@@ -28,16 +28,17 @@ class Frontend:
     """
     Prints bike info.
       Parameter:
-        bikeNum (int)
+        bikeNum (int): Number from QR Code
     """
     params = {"BikeIdentifier": str(bikeNum)}
     p.pprint(requests.get(self.url + self.endpoints["bike"],params=params).json())
 
   def login(self,cardNum,pin):
     """
-    gets authentification bearer.
+    Gets authentification bearer.
       Parameters:
-        cardNum (int), pin (int)
+        cardNum (int): Personal ID
+        pin (int): Password
     """
     parameters = {
       "lang": "en"
@@ -61,7 +62,8 @@ class Frontend:
     """
     Changes PIN.
       Parameters:
-        oldPin (int), newPin (int)
+        oldPin (int): current pin number
+        newPin (int): new pin number
     """
     if(not self.head):
       print("Login first!")
@@ -79,7 +81,7 @@ class Frontend:
     """
     Sends bug report.
       Parameters:
-        message (string)
+        message (string): body of the bug report
     """
     if(not self.head):
       print("Login first!")
@@ -95,7 +97,7 @@ class Frontend:
     p.pprint(response.json())
   
   def showCards(self):
-    """Displays customer's cards."""
+    """Displays customer's cards.(Login required)"""
     if(not self.head):
       print("Login first!")
       return
